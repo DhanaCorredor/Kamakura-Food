@@ -1,0 +1,6 @@
+/node_modules
+package-lock.json
+
+# Archivos internos de Claude Code (no subir)
+CLAUDE.md
+.claude/
