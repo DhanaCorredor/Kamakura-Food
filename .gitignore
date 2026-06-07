@@ -1,5 +1,6 @@
 /node_modules
 package-lock.json
+pnpm-lock.yaml
 
 # Archivos internos de Claude Code (no subir)
 CLAUDE.md

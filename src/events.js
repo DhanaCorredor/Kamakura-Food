@@ -1,5 +1,3 @@
-//Intenta separar los eventos en este archivo.
-
 import { filters, products } from '../assets/data/data.js';
 import { renderFilters, renderProducts } from './menu.js';
 import { filterProducts } from './searcher.js';

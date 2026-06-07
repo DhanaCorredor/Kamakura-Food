@@ -1,5 +1,3 @@
-//Aquí intenta poner las funcionalidades del recibo
-
 import { getSubtotal, getTotal } from './cart.js';
 
 // Plantilla de un plato dentro del recibo (con cantidad y subtotal).

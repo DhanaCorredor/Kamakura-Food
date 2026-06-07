@@ -1,5 +1,3 @@
-//DEBE contener las funcionalidades del carrito de compras.
-
 import { products } from '../assets/data/data.js';
 
 // Estado del carrito: array de objetos { id, name, price, quantity }.
