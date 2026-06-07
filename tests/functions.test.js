@@ -163,4 +163,12 @@ describe('integración con el DOM', () => {
         expect(document.querySelectorAll('#cart-products .cart-container')).toHaveLength(1);
         expect(document.getElementById('cart-total').textContent).toBe('Total: 19.00 €');
     });
+
+    test('no genera ids duplicados con varios platos en el carrito', () => {
+        addItem(0);
+        addItem(2);
+        renderCart(document.getElementById('cart-products'), document.getElementById('cart-total'));
+        // Los platos del carrito usan clases, no ids repetidos (HTML válido).
+        expect(document.querySelectorAll('#cart-products [id="quantity"]')).toHaveLength(0);
+    });
 });

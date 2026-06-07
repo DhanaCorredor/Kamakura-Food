@@ -22,10 +22,17 @@ const cartTotalEl = document.getElementById('cart-total');
 const proceedPayButton = document.getElementById('proceedPay-button');
 const receiptContainer = document.getElementById('receipt-container');
 
+// --- Ayudantes para no repetir (DRY) ----------------------------------------
+const updateCart = () => renderCart(cartProductsEl, cartTotalEl);
+const closeReceipt = () => {
+    receiptContainer.style.display = 'none';
+    receiptContainer.innerHTML = '';
+};
+
 // --- Render inicial ---------------------------------------------------------
 renderFilters(filters, filtersEl);
 renderProducts(products, productsEl);
-renderCart(cartProductsEl, cartTotalEl);
+updateCart();
 
 // --- Filtrar platos por categoría (delegación de eventos) -------------------
 filtersEl.addEventListener('click', (event) => {
@@ -39,7 +46,7 @@ productsEl.addEventListener('click', (event) => {
     const button = event.target.closest('.add-button');
     if (!button) return;
     addItem(Number(button.dataset.id));
-    renderCart(cartProductsEl, cartTotalEl);
+    updateCart();
 });
 
 // --- Abrir / cerrar el carrito lateral --------------------------------------
@@ -60,7 +67,7 @@ cartProductsEl.addEventListener('click', (event) => {
     } else {
         return;
     }
-    renderCart(cartProductsEl, cartTotalEl);
+    updateCart();
 });
 
 // --- Proceder al pago: mostrar el recibo ------------------------------------
@@ -73,15 +80,13 @@ proceedPayButton.addEventListener('click', () => {
 // --- Acciones del recibo: cerrar o pagar (delegación) -----------------------
 receiptContainer.addEventListener('click', (event) => {
     if (event.target.closest('#close-receipt')) {
-        receiptContainer.style.display = 'none';
-        receiptContainer.innerHTML = '';
+        closeReceipt();
     } else if (event.target.closest('#pay-button')) {
         showModal(() => {
             // Al cerrar el modal, todo queda limpio.
             clearCart();
-            renderCart(cartProductsEl, cartTotalEl);
-            receiptContainer.style.display = 'none';
-            receiptContainer.innerHTML = '';
+            updateCart();
+            closeReceipt();
         });
     }
 });

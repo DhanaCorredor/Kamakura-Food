@@ -58,7 +58,7 @@ const createCartItem = ({ id, name, price, quantity }) => `
             <h3>${name}</h3>
             <h5>${price.toFixed(2)} €</h5>
         </div>
-        <div class="quantity-container" id="quantity">
+        <div class="quantity-container">
             <button class="increase" data-id="${id}">+</button>
             <p class="quantity">${quantity}</p>
             <button class="decrease" data-id="${id}">-</button>
